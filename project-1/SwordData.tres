@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="weapondata" format=3 uid="uid://bvavy4f5fb02c"]
+
+[ext_resource type="Script" uid="uid://ceryogevxy4nu" path="res://weapondata.gd" id="1_5w5cn"]
+[ext_resource type="PackedScene" uid="uid://ca4qg561fgl8v" path="res://swordslash.tscn" id="1_q4pnu"]
+[ext_resource type="Texture2D" uid="uid://b6fjfl18qgmgc" path="res://Sword.png" id="2_82120"]
+
+[resource]
+script = ExtResource("1_5w5cn")
+weapontexture = ExtResource("2_82120")
+reloadtime = 0.23
+projectilefired = ExtResource("1_q4pnu")
+metadata/_custom_type_script = "uid://ceryogevxy4nu"

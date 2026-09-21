@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bbrk5gium6lnl"]
+
+[ext_resource type="PackedScene" uid="uid://cubse308cbetd" path="res://player.tscn" id="1_0hol4"]
+[ext_resource type="Texture2D" uid="uid://cwsco4m46a670" path="res://bgtile.png" id="1_epypp"]
+[ext_resource type="Script" uid="uid://5k2lvaqbvpxv" path="res://director.gd" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://bn3nsnujw0ej7" path="res://border.png" id="5_q6r6c"]
+
+[sub_resource type="Environment" id="Environment_0hol4"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 4.3
+glow_strength = 0.41
+glow_bloom = 0.15
+glow_hdr_luminance_cap = 256.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q6r6c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kdubu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d21ai"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rj586"]
+
+[node name="Node2D" type="Node2D" unique_id=1505785868]
+script = ExtResource("1_kdubu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2094726762]
+environment = SubResource("Environment_0hol4")
+
+[node name="Bgtile" type="Sprite2D" parent="." unique_id=1246964411]
+z_index = -1
+texture_repeat = 2
+position = Vector2(7, 0)
+scale = Vector2(0.549, 0.549)
+texture = ExtResource("1_epypp")
+region_enabled = true
+region_rect = Rect2(0, 0, 8080, 7500)
+region_filter_clip_enabled = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=249125834]
+y_sort_enabled = true
+
+[node name="Player" parent="Node2D" unique_id=1467033535 node_paths=PackedStringArray("camera") instance=ExtResource("1_0hol4")]
+camera = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=754371747]
+scale = Vector2(159.95314, 362.20837)
+zoom = Vector2(0.35, 0.35)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=883204081]
+position = Vector2(-4.1328125, -2.54187)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2076838330]
+position = Vector2(-2209.8672, -0.45812988)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_q6r6c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=118817208]
+position = Vector2(0.13281272, -2057.458)
+rotation = 3.1415927
+scale = Vector2(2.2644656, 0.4416053)
+shape = SubResource("WorldBoundaryShape2D_kdubu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1259383943]
+position = Vector2(2219.1328, -0.4581298)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_d21ai")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=563858835]
+position = Vector2(0.13281272, 2053.5417)
+scale = Vector2(2.2644656, 0.4416053)
+shape = SubResource("WorldBoundaryShape2D_rj586")
+
+[node name="Border" type="Sprite2D" parent="." unique_id=773611927]
+position = Vector2(-2227, -1.0001848)
+scale = Vector2(0.18750069, 21.75)
+texture = ExtResource("5_q6r6c")
+
+[node name="Border3" type="Sprite2D" parent="." unique_id=288650838]
+position = Vector2(2229, -0.49980927)
+scale = Vector2(0.18750069, 21.744793)
+texture = ExtResource("5_q6r6c")
+
+[node name="Border2" type="Sprite2D" parent="." unique_id=232550965]
+position = Vector2(2.5660715, 2069)
+rotation = 1.5707964
+scale = Vector2(0.18750069, 23.379517)
+texture = ExtResource("5_q6r6c")
+
+[node name="Border4" type="Sprite2D" parent="." unique_id=809225657]
+position = Vector2(1.0210001, -2071.9731)
+rotation = 1.5707964
+scale = Vector2(0.18722221, 23.396036)
+texture = ExtResource("5_q6r6c")
+
+[node name="Spawners" type="Node2D" parent="." unique_id=475476657]
+
+[node name="Marker2D" type="Marker2D" parent="Spawners" unique_id=933199523]
+position = Vector2(-1683, -1539)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawners" unique_id=1305398399]
+position = Vector2(1695, 1533)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawners" unique_id=656524437]
+position = Vector2(-1691, 1522)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawners" unique_id=1753591875]
+position = Vector2(1699, -1534)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357943665]
+layer = -20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1539340146]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14901961, 0.019607844, 0.11372549, 1)
+metadata/_edit_use_anchors_ = true

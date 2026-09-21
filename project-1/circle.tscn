@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b662wb4m8erbd"]
+
+[ext_resource type="Script" uid="uid://cy8j14bghfjkc" path="res://circle.gd" id="1_2eeqm"]
+[ext_resource type="Texture2D" uid="uid://dj0hrhob2n4qp" path="res://TexasCircleLarge.png" id="2_5epwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whlr7"]
+radius = 67.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gr8u"]
+radius = 60.133186
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ho7wi"]
+radius = 46.0
+
+[node name="Circle" type="CharacterBody2D" unique_id=233051984]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2eeqm")
+
+[node name="TexasCircleLarge" type="Sprite2D" parent="." unique_id=424494784]
+texture = ExtResource("2_5epwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143255267]
+shape = SubResource("CircleShape2D_whlr7")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=1610139993 groups=["Enemy hurtbox"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1917572438]
+shape = SubResource("CircleShape2D_0gr8u")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1693982597]
+offset_left = -59.0
+offset_top = 56.0
+offset_right = 60.0
+offset_bottom = 83.0
+max_value = 1.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1351256744]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=484198028]
+shape = SubResource("CircleShape2D_ho7wi")
+debug_color = Color(0.9999997, 0.0036314651, 0.09008732, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

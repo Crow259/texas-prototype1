@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhrdaoju514iv"]
+
+[ext_resource type="Texture2D" uid="uid://bmlgec7lpop5f" path="res://deathscreen.png" id="1_ftl74"]
+
+[node name="Node2D" type="Node2D" unique_id=1403124349]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1103665410]
+position = Vector2(711, 341)
+texture = ExtResource("1_ftl74")

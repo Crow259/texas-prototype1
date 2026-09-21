@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cubse308cbetd"]
+
+[ext_resource type="Script" uid="uid://e4ptxqgis7gp" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Resource" uid="uid://xo06fvm80ed6" path="res://RevolverData.tres" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dgnfle2sijygf" path="res://TexasBruteLarge.png" id="2_i3pqv"]
+[ext_resource type="Resource" uid="uid://bvavy4f5fb02c" path="res://SwordData.tres" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://ohwrs5rd5ga0" path="res://Revolver.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://bu3dh2p3k4epp" path="res://Reticle.png" id="4_hqtel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(82, 69)
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver/RevolverSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "Recoil"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver/RevolverSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(0.050765753, 1),
+"update": 0,
+"values": [-0.17627825, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hs0m"]
+_data = {
+&"RESET": SubResource("Animation_hqtel"),
+&"Recoil": SubResource("Animation_sweqy")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1467033535]
+z_index = 10
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_onrkg")
+Weapon1 = ExtResource("2_2hs0m")
+Weapon2 = ExtResource("3_1jxqw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=183389053]
+position = Vector2(1, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1958262612]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="Revolver" type="Node2D" parent="." unique_id=2055935211]
+position = Vector2(0.565, 8.315)
+
+[node name="RevolverSprite" type="Sprite2D" parent="Revolver" unique_id=855136502]
+position = Vector2(-0.565, -0.31499958)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_i3pqv")
+offset = Vector2(40.085, 11.91)
+
+[node name="Marker2D" type="Marker2D" parent="Revolver/RevolverSprite" unique_id=588090754]
+position = Vector2(147.69229, 0)
+scale = Vector2(1.5546558, 1.5546558)
+
+[node name="Reticle" type="Sprite2D" parent="." unique_id=2090897333]
+modulate = Color(1, 1, 1, 0.27450982)
+top_level = true
+z_index = 99
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_hqtel")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=432201239]
+libraries/ = SubResource("AnimationLibrary_2hs0m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1917136099]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1511841307]
+offset_left = 6.0
+offset_top = 609.0
+offset_right = 162.0
+offset_bottom = 638.0
+max_value = 1.0
+show_percentage = false

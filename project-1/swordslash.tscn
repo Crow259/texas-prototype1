@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ca4qg561fgl8v"]
+
+[ext_resource type="Script" uid="uid://clicqoodv7ig8" path="res://swordslash.gd" id="1_flgbu"]
+[ext_resource type="Texture2D" uid="uid://dv1vpbtoygx5a" path="res://New Piskel (7).png" id="2_gsyf0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
+radius = 96.0
+height = 340.9091
+
+[node name="Area2D" type="Area2D" unique_id=1161320502]
+collision_mask = 5
+script = ExtResource("1_flgbu")
+BulletSpeed = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1300906580]
+position = Vector2(125, -2)
+scale = Vector2(1.67, 0.88)
+shape = SubResource("CapsuleShape2D_v8qja")
+
+[node name="RevolverBullet" type="Sprite2D" parent="." unique_id=1857863711]
+position = Vector2(155.00002, -21)
+scale = Vector2(1.91, 1.72)
+texture = ExtResource("2_gsyf0")
+
+[node name="Timer" type="Timer" parent="." unique_id=351594477]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
